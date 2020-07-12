@@ -1,0 +1,192 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Manasa_PersonalExpense</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="stylesheet" 
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
+        crossorigin="anonymous"
+        />
+        <script src="https://kit.fontawesome.com/f9197d847f.js" crossorigin="anonymous"></script>
+        <style>
+            body{
+              background-color: #c02b2bab;
+    
+    
+            }
+            #ui{
+                background-color: white;
+                color:#0B3142 ;
+            }
+            #uo{
+              background-color:whitesmoke;
+              color: #0F5257;
+            }
+        </style>
+        
+    </head>
+    <body>
+        <nav class="navbar navbar-dark bg-dark">
+            <span class="navbar-brand mb-0 h1">Xperse</span>
+            <span class ="navbar-brand mb-0 h1" id = "headingTotal"></span>
+        </nav>
+        <div class="container-fluid background-color" style="min-height:100vh">
+            <div class ="container-fluid bg-light">
+                <h1 id ="headingTotal" >Personal Expense</h1><br>
+                <div class="jumbotron mt-4 container-fluid background-color">
+                    <div class="input-group mb-3 container-fluid bg-dark" >
+                      <input 
+                      type = "text"
+                      id="expenseamt"
+                      class="form-control"
+                      placeholder="Amount spent"
+                      aria-label="Amount spent"
+                      aria-describedby="spent in rupee"
+                      />
+                      <div class="input-group-append">
+                            <span class="input-group-text" id= "spent in rupee">₹</span>
+                      </div>
+                      <input
+                            type="text"
+                            id="expensedesc"
+                            class = "form-control"
+                            placeholder="spent On"
+                            aria-label="spent On"
+                            aria-describedby="spent at"
+                        />
+                      <div class="input-group-append">
+                              <button class="btn btn-outline-primary" id="buttonid" type="button" id="button-addon2">
+                                +❤️
+                              </button>       
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <ul class="list-group" id ="expenselabel">
+                    </ul>
+                  </div>
+            
+            
+            </div>
+        </div>
+        <script>
+            let totalExpense = 0;
+            //reading or giving ref to elementsHTML
+            const headingEl = document.querySelector("#headingTotal");
+            headingEl.textContent =`Welcome to Manasa Xperse world`;
+            //second ref to div ele
+            const expTable = document.querySelector("#expenselabel");
+            let allExpense = [];
+            let inputDesc=document.querySelector("#expensedesc");
+            let inputamt = document.querySelector("#expenseamt");
+            /*format for getting date in US way 
+            let todayDate = new Date();
+            let options = {year:'numeric' , month:'long' , day:'numeric'};
+            todayDate.toLocaleDateString('en-US' , options);
+            */
+            //function is to create ctrl func to
+            //calc totalExpense with arg as input amount
+            function afterDeleteTotalExpense(expense){
+                if(totalExpense>=0){
+                    totalExpense = totalExpense - expense;
+                    headingEl.textContent  = `Total@end:${totalExpense}`;
+                }
+            }
+            function addExpenseTotal(){
+                let textDesc = inputDesc.value;
+                let expense = inputamt.value;
+                expense = parseInt(expense,10);
+                //eXpense is a datastructure and an object
+                let eXpense = {};
+                eXpense.desc = textDesc;
+                eXpense.amt = expense;
+                //adding even date to the eXpense ds or obj
+                eXpense.moment = new Date();
+                totalExpense = totalExpense + expense;
+                headingEl.textContent  = `Total @end:${totalExpense}`;
+                allExpense.push(eXpense);
+                console.clear();
+                console.table(allExpense);
+                toRenderList(allExpense);
+                /*const data1 = allExpense[0];
+                const data2 = allExpense[1];
+                const datatxt1 = `Expense ${data1.amt} :: Description ${data1.desc}`;
+                const datatxt2 = `Expense ${data2.amt} :: Description ${data2.desc}`;
+                const tableCont = `
+                    <div>${datatxt1}</div>
+                    <div>${datatxt2}</div>
+                    `
+                expTable.innerHTML = tableCont;*/
+            }
+            //button ref
+            const ele = document.querySelector("#buttonid");
+            ele.addEventListener("click", addExpenseTotal , false);
+           
+            //Controller functions
+            
+            //creating funcn to limit html code from script
+            //that is destructuring ...read more in mdn docs
+            //this is View layer i.e..eliminating any code in this function
+            function createListItem({desc,amt,moment}){
+                return `<li class="list-group-item d-flex justify-content-between">
+                            <div class="d-flex flex-column">
+                              ${desc}
+                              <small class="text-muted">${getDateString(moment)}</small>
+                            </div>
+                            <div >
+                              <span class="px-5">
+                                ${amt}
+                              </span>
+                              <button type="button" class="btn btn-outline-danger btn-sm"
+                              onclick = "DeleteItem(${moment.valueOf()})">
+                                <i class="fas fa-trash-alt"></i>
+                              </button>
+                            </div>
+                          </li>`
+            }
+            //writing func to get dateformat in US way
+            //here mom is just reference varibale ..it can be any
+            function getDateString(mom){
+                return `${mom.toLocaleDateString('en-US' , {year:'numeric' , month:'long' , day:'numeric'})}`
+            }
+            //toRenderList func is to render the list group format of taken array whether 'allExpense' or 'filteredArray'
+            function toRenderList(renderList){
+                const expTableEl = renderList.map(xp => createListItem(xp) 
+                   //return `<div>Rs${xp.amt} :: ${xp.desc}</div>`
+                );
+                const joinedexpenseEl =  expTableEl.join("");
+                //console.log(joinedexpenseEl);
+                expTable.innerHTML = joinedexpenseEl;
+            }
+            function DeleteItem(dateValue){
+                /*verbose way of doing using for loop
+                    let filteredArray = [];
+                     filteredArray = allExpense;
+                    console.log("Items were deleted"+dateValue);*/
+                    for(let i=0;i<allExpense.length;i++){
+                        //here === checks equality and !== non-equality
+                        if(allExpense[i].moment.valueOf() === dateValue){
+                            afterDeleteTotalExpense(allExpense[i].amt);
+                            let removed = allExpense.splice(i,1);
+                            //console.log(filteredArray);
+                        }
+                    }
+                    
+                    /*
+                    const filteredArray  = allExpense.filter((expenseObj) => {
+                        if(expenseObj.moment.valueOf() === dateValue){
+                        return `${afterDeleteTotalExpense(expenseObj.amt)}
+                                ${expenseObj}`
+                        }
+                    });
+                    */
+                    toRenderList(allExpense);
+                    
+            }
+            </script>
+    </body>
+</html>

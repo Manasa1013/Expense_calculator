@@ -1,0 +1,102 @@
+<!DOCTYPE html> 
+<html lang = "en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Design for Xperse</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+        
+    <link rel="stylesheet" 
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
+    crossorigin="anonymous"
+    />
+    <script src="https://kit.fontawesome.com/f9197d847f.js" crossorigin="anonymous"></script> 
+    <style>
+        body{
+          background-color: #ff9000;
+
+
+        }
+        #ui{
+            background-color: white;
+            color:#0B3142 ;
+        }
+        #uo{
+          background-color:whitesmoke;
+          color: #0F5257;
+        }
+    </style>
+    <body>
+      <nav class="navbar navbar-dark bg-dark">
+        <span class="navbar-brand mb-0 h1">Xperse</span>
+      </nav>
+      <div class="container-fluid bg-dark" style="min-height:100vh">
+      <div class ="container-fluid bg-light">
+        <div class="jumbotron mt-4 container-fluid background-color">
+          <div class="input-group mb-3 container-fluid bg-dark" >
+            <input 
+            type = "text"
+            class="form-control"
+            placeholder="Amount spent"
+            aria-label="Amount spent"
+            aria-describedby="spent in rupee"
+            />
+            <div class="input-group-append">
+                  <span class="input-group-text" id= "spent in rupee">₹</span>
+            </div>
+            <input
+                  type="text"
+                  class = "form-control"
+                  placeholder="spent On"
+                  aria-label="spent On"
+                  aria-describedby="spent at"
+              />
+            <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button" id="button-addon2">
+                      Add
+                    </button>       
+            </div>
+          </div>
+        </div>
+        <div>
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between">
+              <div class="d-flex flex-column">
+                Tshirt
+                <small class="text-muted">June 22,2020</small>
+              </div>
+              <div >
+                <span class="px-5">
+                  500
+                </span>
+                <button type="button" class="btn btn-outline-danger btn-sm">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <div class="d-flex flex-column">
+                OTT
+                <small class="text-muted">July 6th,2020 </small>
+              </div>
+              <div>
+                <span class="px-5">
+                    1500
+                </span>
+                <button type="button" class="btn btn-outline-danger btn-sm">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+
+
