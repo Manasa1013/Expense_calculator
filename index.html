@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Manasa_PersonalExpense</title>
+        <title>Manasa_PersonalExpenseWebapp</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <link rel="stylesheet" 
@@ -36,7 +36,7 @@
         </nav>
         <div class="container-fluid background-color" style="min-height:100vh">
             <div class ="container-fluid bg-light">
-                <h1 id ="headingTotal" >Personal Expense</h1><br>
+                <h1 id ="headingTotal" >Expense Cautioner and Calculator</h1><br>
                 <div class="jumbotron mt-4 container-fluid background-color">
                     <div class="input-group mb-3 container-fluid bg-dark" >
                       <input 
@@ -60,7 +60,7 @@
                         />
                       <div class="input-group-append">
                               <button class="btn btn-outline-primary" id="buttonid" type="button" id="button-addon2">
-                                +❤️
+                                +Add
                               </button>       
                       </div>
                     </div>
@@ -77,7 +77,7 @@
             let totalExpense = 0;
             //reading or giving ref to elementsHTML
             const headingEl = document.querySelector("#headingTotal");
-            headingEl.textContent =`Welcome to Manasa Xperse world`;
+            headingEl.textContent =`Welcome to Manasa Xperse WebApp`;
             //second ref to div ele
             const expTable = document.querySelector("#expenselabel");
             let allExpense = [];
