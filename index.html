@@ -125,9 +125,15 @@
             //button ref
             const ele = document.querySelector("#buttonid");
             ele.addEventListener("click", addExpenseTotal , false);
+            ele.addEventListener("click",resetData,false);
            
             //Controller functions
-            
+
+            //resetData is to reset the data on clicking add button to allow user to easily enter the next list items.
+            function resetData(){
+              document.querySelector("#expensedesc").value = "";
+              document.querySelector("#expenseamt").value = "";
+            }
             //creating funcn to limit html code from script
             //that is destructuring ...read more in mdn docs
             //this is View layer i.e..eliminating any code in this function
