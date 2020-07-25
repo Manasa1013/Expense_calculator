@@ -38,7 +38,16 @@
             <div class ="container-fluid bg-light">
                 <h1 id ="headingTotal" >Expense Cautioner and Calculator</h1><br>
                 <div class="jumbotron mt-4 container-fluid background-color">
-                    <div class="input-group mb-3 container-fluid bg-dark" >
+                    <div class="input-group mb-4 container-fluid bg-dark" >
+                      <input
+                            type="text"
+                            id="expensedesc"
+                            class = "form-control"
+                            placeholder="spent On"
+                            aria-label="spent On"
+                            aria-describedby="spent at"
+                        />
+                      
                       <input 
                       type = "text"
                       id="expenseamt"
@@ -50,18 +59,11 @@
                       <div class="input-group-append">
                             <span class="input-group-text" id= "spent in rupee">₹</span>
                       </div>
-                      <input
-                            type="text"
-                            id="expensedesc"
-                            class = "form-control"
-                            placeholder="spent On"
-                            aria-label="spent On"
-                            aria-describedby="spent at"
-                        />
+                      <br>
                       <div class="input-group-append">
-                              <button class="btn btn-outline-primary" id="buttonid" type="button" id="button-addon2">
-                                +Add
-                              </button>       
+                        <button class="btn btn-outline-primary" id="buttonid" type="button" id="button-addon2">
+                          +Add
+                        </button>       
                       </div>
                     </div>
                   </div>
